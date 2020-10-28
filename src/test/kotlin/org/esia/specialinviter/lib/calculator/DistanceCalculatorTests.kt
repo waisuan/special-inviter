@@ -1,4 +1,4 @@
-package org.esia.specialinviter.calculator
+package org.esia.specialinviter.lib.calculator
 
 import org.assertj.core.api.Assertions.assertThat
 import org.esia.specialinviter.models.Coordinate

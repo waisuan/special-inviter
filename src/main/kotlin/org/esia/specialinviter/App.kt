@@ -1,5 +1,5 @@
 package org.esia.specialinviter
 
 fun main() {
-    println("Works")
+    println("Foo bar")
 }

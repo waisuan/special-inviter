@@ -1,25 +1,25 @@
-package org.esia.specialinviter.calculator
+package org.esia.specialinviter.lib.calculator
 
-import org.esia.specialinviter.models.Coordinate
-import org.esia.specialinviter.models.DistanceUnit
 import kotlin.math.acos
 import kotlin.math.cos
 import kotlin.math.sin
+import org.esia.specialinviter.models.Coordinate
+import org.esia.specialinviter.models.DistanceUnit
 
 /*
-* This calculator calculates the distance between two coordinates (latitude + longitude)
-* using the great-circle distance formula.
+* Given two coordinates in degrees (latitude + longitude), this calculator class calculates the distance between
+* them using the great-circle distance formula.
 * For more info, refer to https://en.wikipedia.org/wiki/Great-circle_distance
 */
 object DistanceCalculator {
     fun distanceBetween(from: Coordinate, to: Coordinate, unit: DistanceUnit = DistanceUnit.KM): Double {
         val distance = Math.toDegrees(acos(
-            sin(from.latitudeInRadians()) * sin(to.latitudeInRadians())
-                + cos(from.latitudeInRadians()) * cos(to.latitudeInRadians())
-                * cos(from.longitudeInRadians() - to.longitudeInRadians())
+            sin(from.latitudeInRadians()) * sin(to.latitudeInRadians()) +
+                cos(from.latitudeInRadians()) * cos(to.latitudeInRadians()) *
+                cos(from.longitudeInRadians() - to.longitudeInRadians())
         ))
 
-        return when(unit) {
+        return when (unit) {
             DistanceUnit.KM -> distanceInKilometres(distance)
             DistanceUnit.MI -> distanceInMiles(distance)
             DistanceUnit.NM -> distanceInNauticalMiles(distance)
