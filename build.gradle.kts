@@ -17,6 +17,7 @@ dependencies {
     implementation("org.apache.logging.log4j", "log4j-api", "2.13.3")
     implementation("org.apache.logging.log4j", "log4j-core", "2.13.3")
     implementation("org.json", "json", "20200518")
+    implementation("com.xenomachina:kotlin-argparser:2.0.7")
     testImplementation("junit", "junit", "4.12")
     testImplementation("org.assertj:assertj-core:3.15.0")
 }
