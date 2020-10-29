@@ -40,7 +40,7 @@ class CustomerFileParserTests {
     }
 
     @Test
-    fun `expects a JSONException exception type if given file that has missing contents`() {
+    fun `expects a JSONException exception type if given a file that has missing contents`() {
         assertThatThrownBy { CustomerFileParser.parse("src/test/resources/MockMalformedCustomers2.txt") }
             .isInstanceOf(JSONException::class.java)
             .hasMessageContaining("not found")
