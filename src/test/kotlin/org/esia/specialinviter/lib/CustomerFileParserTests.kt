@@ -10,9 +10,11 @@ import org.json.JSONException
 import org.junit.Test
 
 class CustomerFileParserTests {
+    private val resourceFilePath = "src/test/resources"
+
     @Test
     fun `expects a list of Customer objects when given a file`() {
-        val customers = CustomerFileParser.parse("src/test/resources/MockCustomers.txt")
+        val customers = CustomerFileParser.parse("$resourceFilePath/MockCustomersSmall.txt")
         assertThat(customers.sortedBy { it.userId }).isEqualTo(listOf(
             Customer(1, "Alice Cahill", Coordinate(latitude = 51.92893, longitude = -10.27699)),
             Customer(12, "Christina McArdle", Coordinate(latitude = 52.986375, longitude = -6.043701))
@@ -21,27 +23,27 @@ class CustomerFileParserTests {
 
     @Test
     fun `expects an empty list when given an empty file`() {
-        val customers = CustomerFileParser.parse("src/test/resources/MockEmptyCustomers.txt")
+        val customers = CustomerFileParser.parse("$resourceFilePath/MockEmptyCustomers.txt")
         assertThat(customers).isEqualTo(emptyList<Customer>())
     }
 
     @Test
     fun `expects a FileNotFoundException exception type if given a non-existent file`() {
-        assertThatThrownBy { CustomerFileParser.parse("src/test/resources/DoesNotExistFile.txt") }
+        assertThatThrownBy { CustomerFileParser.parse("$resourceFilePath/DoesNotExistFile.txt") }
             .isInstanceOf(FileNotFoundException::class.java)
             .hasMessageContaining("No such file or directory")
     }
 
     @Test
     fun `expects a JSONException exception type if given a non-JSON formatted file`() {
-        assertThatThrownBy { CustomerFileParser.parse("src/test/resources/MockMalformedCustomers.txt") }
+        assertThatThrownBy { CustomerFileParser.parse("$resourceFilePath/MockMalformedCustomers.txt") }
             .isInstanceOf(JSONException::class.java)
             .hasMessageContaining("A JSONObject text must begin with '{'")
     }
 
     @Test
     fun `expects a JSONException exception type if given a file that has missing contents`() {
-        assertThatThrownBy { CustomerFileParser.parse("src/test/resources/MockMalformedCustomers2.txt") }
+        assertThatThrownBy { CustomerFileParser.parse("$resourceFilePath/MockMalformedCustomers2.txt") }
             .isInstanceOf(JSONException::class.java)
             .hasMessageContaining("not found")
     }
