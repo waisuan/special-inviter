@@ -26,15 +26,9 @@ object GreatCircleDistanceCalculator : DistanceCalculator() {
         }
     }
 
-    private fun distanceInKilometres(distance: Double): Double {
-        return distance * 60 * 1.1515 * 1.609344
-    }
+    private fun distanceInKilometres(distance: Double) = distance * 60 * 1.1515 * 1.609344
 
-    private fun distanceInMiles(distance: Double): Double {
-        return distance * 60 * 1.1515
-    }
+    private fun distanceInMiles(distance: Double) = distance * 60 * 1.1515
 
-    private fun distanceInNauticalMiles(distance: Double): Double {
-        return distance * 60 * 1.1515 * 0.8684
-    }
+    private fun distanceInNauticalMiles(distance: Double) = distance * 60 * 1.1515 * 0.8684
 }
