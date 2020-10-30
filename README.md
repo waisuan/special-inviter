@@ -2,6 +2,8 @@
 This is a sample Kotlin standalone app that returns a list of invitees/customers that are within the allowed distance between
 an invitee and a given source coordinate.
 
+_Psst...```src/main/kotlin/org/esia/specialinviter/App.kt``` is a good starting point to see how the app operates internally_
+
 # Prerequisites
 - Java >= 1.8.0
 - Gradle (Optional)
