@@ -7,6 +7,7 @@ import org.esia.specialinviter.models.Distance
 import org.esia.specialinviter.services.InviteeService
 
 fun main(args: Array<String>) = mainBody {
+    // Note: command line arg are parsed using a custom-made parser --> CommandLineParser.kt
     ArgParser(args).parseInto(::CommandLineParser).run {
         InviteeService
             .generateInvitees(sourceCoordinates, Distance(maxDistance, maxDistanceUnit), customersFile)
